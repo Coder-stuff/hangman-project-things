@@ -276,7 +276,11 @@ while True:
 		break
 	if guessList == listword:
 		print("You guessed the word! (you win)")
-		break
+		while True:
+			for frame in EndgameList:
+				os.system("cls")
+				print(frame)
+				time.sleep(.15)
 		
 
 
