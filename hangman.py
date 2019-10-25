@@ -1,6 +1,6 @@
 print("Welocme to Hangman")
 print("Try to guess the random word")
-print("You have 5 lives")
+print("You have 6 lives")
 import time
 import os
 frameList = [
@@ -8,7 +8,7 @@ frameList = [
  _________________________
 |                         |
 |              +======+   |
-|                     |   |
+|                   \\ |   |
 |                     |   |
 |                     |   |
 |                     |   |
@@ -82,14 +82,101 @@ frameList = [
 |              +======+   |
 |             ( )    \\|   |
 |              |      |   |
-|             /|\\    |   |
+|             /|\\     |   |
 |              |      |   |
 |             /\\      |   |
 |                     |   |
 |                   ===== |
 |_________________________|'''
+]
+EndgameList = [
+'''
+ _________________________
+|                         |
+|      Y                  |
+|                         |
+|                         |
+|                         |
+|                         |
+|                         |
+|                         |
+|                         |
+|_________________________|''',
+'''
+ _________________________
+|                         |
+|      Y O                |
+|                         |
+|                         |
+|                         |
+|                         |
+|                         |
+|                         |
+|                         |
+|_________________________|''',
+'''
+ _________________________
+|                         |
+|      Y O U              |
+|                         |
+|                         |
+|                         |
+|                         |
+|                         |
+|                         |
+|                         |
+|_________________________|''',
+'''
+ _________________________
+|                         |
+|      Y O U              |
+|                         |
+|           L             |
+|                         |
+|                         |
+|                         |
+|                         |
+|                         |
+|_________________________|''',
+'''
+ _________________________
+|                         |
+|      Y O U              |
+|                         |
+|           L             |
+|            O            |
+|                         |
+|                         |
+|                         |
+|                         |
+|_________________________|''',
+'''
+ _________________________
+|                         |
+|      Y O                |
+|          U              |
+|                         |
+|            L            |
+|             O           |
+|               S         |
+|                         |
+|                         |
+|_________________________|''',
+'''
+ _________________________
+|                         |
+|                         |
+|     Y                   |
+|        O                |
+|           U             |
+|         L               |
+|            O            |
+|               S         |
+|                   E     |
+|_________________________|'''
 
 ]
+
 a = "a"
 b = "b"
 c = "c"
@@ -144,13 +231,13 @@ else:
 	print("You need to type a number 4-8")
 
 
-x=0
 
-lives = 0
+lives = 6
 word = random.choice(wordList)
-print(word)	
+listword = list(word)
+print(listword)	
 guessList = []
-for a in word:
+for a in listword:
 	guessList.append("_")
 
 
@@ -162,25 +249,35 @@ while True:
 	index = 0
 	if choice == "quit":
 		break
-	for letter in word:
+	for letter in listword:
 		if letter == choice:
 			guessList[index] = choice
 		index += 1
 	if letter != choice:
-		lives += 1
-		print(lives)
+		lives -= 1
+		print("you have " +str(lives) +" guesses left")
 	letterBank.append(choice)
-	if lives == 0:
+	if lives == 6:
 		print(frameList[0])
-	if lives == 1:
+	if lives == 5:
 		print(frameList[1])
-	if lives == 2:
+	if lives == 4:
 		print(frameList[2])
 	if lives == 3:
 		print(frameList[3])
-	if lives >= 6:
-		print("you lose, out of lives")
+	if lives == 2:
+		print(frameList[4])
+	if lives == 1:
+		print(frameList[5])
+	if lives == 0:
+		print(frameList[6] +"   Last life!")
+	if lives < 0:
+		print(frameList +"you lose, out of lives")
 		break
+	if guessList == listword:
+		print("You guessed the word! (you win)")
+		break
+		
 
 
 
