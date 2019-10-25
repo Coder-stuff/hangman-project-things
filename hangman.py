@@ -272,15 +272,14 @@ while True:
 	if lives == 0:
 		print(frameList[6] +"   Last life!")
 	if lives < 0:
-		print(frameList +"you lose, out of lives")
-		break
-	if guessList == listword:
-		print("You guessed the word! (you win)")
 		while True:
 			for frame in EndgameList:
 				os.system("cls")
 				print(frame)
 				time.sleep(.15)
+	if guessList == listword:
+		print("You guessed the word! (you win)")
+		
 		
 
 
