@@ -205,13 +205,12 @@ y = "y"
 z = "z"
 letterBank = []
 
+
 fourLwrds = ["help","hide","face","home","eyes","arms","tree","pond","lake","free","joke","nail"]
 fiveLwrds = ["ocean","hands","roots","beast","yeast","plant","socks","ankle","zebra"]
 sixLwrds = ["copter","screen","papers","hoodie","bottle","beetle","rapper","finger"]
-sevenLwrds = ["walmart","sticker","jukebox","windows","bicycle"]
-eightLwrds = ["computer","national","keyboard"]
 import random
-letters = input("How many letters do you want the word to be? (minimum of 4 letters, max of 8): ")
+letters = input("How many letters do you want the word to be? (minimum of 4 letters, max of 6): ")
 if letters == "4":
 	wordList = fourLwrds
 	
@@ -221,21 +220,14 @@ elif letters == "5":
 elif letters == "6":
 	wordList = sixLwrds
 	
-elif letters == "7":
-	wordList = sevenLwrds
-	
-elif letters == "8":
-	wordList = eightLwrds
-	
 else:
-	print("You need to type a number 4-8")
+	print("You need to type a number 4-6")
 
 
 
 lives = 6
 word = random.choice(wordList)
-listword = list(word)
-print(listword)	
+listword = list(word)	
 guessList = []
 for a in listword:
 	guessList.append("_")
@@ -255,7 +247,7 @@ while True:
 		index += 1
 	if letter != choice:
 		lives -= 1
-		print("you have " +str(lives) +" guesses left")
+	print("you have " +str(lives) +" guesses left")
 	letterBank.append(choice)
 	if lives == 6:
 		print(frameList[0])
@@ -276,9 +268,10 @@ while True:
 			for frame in EndgameList:
 				os.system("cls")
 				print(frame)
-				time.sleep(.15)
+				time.sleep(.18)
 	if guessList == listword:
 		print("You guessed the word! (you win)")
+		break
 		
 		
 
